@@ -465,7 +465,7 @@ def main():
 
     # Add adapter and make sure the trainable params are in float32.
     unet.add_adapter(unet_lora_config)
-    if args.mixed_precision == "fp16":
+    if accelerator.mixed_precision == "fp16":
         for param in unet.parameters():
             # only upcast trainable parameters (LoRA) into fp32
             if param.requires_grad:
