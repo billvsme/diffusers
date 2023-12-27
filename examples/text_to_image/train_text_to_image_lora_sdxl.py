@@ -630,7 +630,7 @@ def main(args):
         text_encoder_two.add_adapter(text_lora_config)
 
     # Make sure the trainable params are in float32.
-    if args.mixed_precision == "fp16":
+    if accelerator.mixed_precision == "fp16":
         models = [unet]
         if args.train_text_encoder:
             models.extend([text_encoder_one, text_encoder_two])
